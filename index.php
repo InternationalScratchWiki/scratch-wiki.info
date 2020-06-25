@@ -69,7 +69,7 @@ html, body {
 }
 #cover {
 	height: calc(50vh - 4em);
-	background-color: #f49d25;
+	background-color: #7953C4;
 	padding: 2em;
 	text-align: center;
 	color: #fff;
