@@ -85,9 +85,11 @@ html, body {
 	table-layout: fixed;
 }
 a {
-	display: block;
 	text-decoration: none;
 	color: #25aff4;
+}
+table a {
+	display: block;
 }
 a:hover {
 	color: #fff;
