@@ -1,0 +1,42 @@
+html, body {
+	background-color: #25aff4;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 18px;
+	line-height: 2rem;
+}
+* {
+	margin: 0;
+	padding: 0;
+	vertical-align: middle;
+}
+#cover {
+	height: calc(50vh - 4em);
+	background-color: #7953C4;
+	padding: 2em;
+	text-align: center;
+	color: #fff;
+}
+#wikis {
+	height: calc(50vh + 8em);
+	text-align: center;
+	padding: 2em;
+	background-color: #fff;
+}
+#wikis table {
+	width: 100%;
+	table-layout: fixed;
+}
+a {
+	text-decoration: none;
+	color: #25aff4;
+}
+table a {
+	display: block;
+}
+a:hover {
+	color: #fff;
+	background-color: #25aff4;
+}
+a:focus {
+	outline: none;
+}

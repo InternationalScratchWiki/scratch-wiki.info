@@ -55,57 +55,17 @@ define('PATH', $_SERVER['REQUEST_URI']);
 	<meta name="og:description" content="<?=$strings['meta.description']?>" />
 	<meta property="og:image" content="https://scratch.mit.edu/images/scratch-og.png" />
 	<meta name="keywords" content="wiki, scratch, documentation" />
-	<style>
-html, body {
-	background-color: #25aff4;
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-	font-size: 18px;
-	line-height: 2rem;
-}
-* {
-	margin: 0;
-	padding: 0;
-	vertical-align: middle;
-}
-#cover {
-	height: calc(50vh - 4em);
-	background-color: #7953C4;
-	padding: 2em;
-	text-align: center;
-	color: #fff;
-}
-#wikis {
-	height: calc(50vh - 4em);
-	text-align: center;
-	padding: 2em;
-	background-color: #fff;
-}
-#wikis table {
-	width: 100%;
-	table-layout: fixed;
-}
-a {
-	text-decoration: none;
-	color: #25aff4;
-}
-table a {
-	display: block;
-}
-a:hover {
-	color: #fff;
-	background-color: #25aff4;
-}
-a:focus {
-	outline: none;
-}
-.<?=LANGUAGE?> {
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+  .<?=LANGUAGE?> {
 	border: 2.5px dashed #f80;
 	border-radius: 5px;
-}
-	</style>
+  }
+  </style>
 </head>
 <body>
 	<div id="cover">
+    <img src="assets/img/logo.png" alt="<?=$strings['cover.logoalt']?>">
 		<h1><?=$strings['cover.title']?></h1>
 		<p><?=$strings['cover.content']?></p>
 	</div>
@@ -114,17 +74,17 @@ a:focus {
 		<p><?=$_REQUEST['lang'] ? $strings['wikis.content'] : $strings['wikis.content.nolang']?></p>
 		<br/>
 <table align="center"><tr>
-	<th class="test" colspan="4"><a href="https://test.scratch-wiki.info<?=PATH?>">Test</a></th>
+	<th class="test" colspan="4"><img src="assets/img/logos/test.png"><a href="https://test.scratch-wiki.info<?=PATH?>">Test</a></th>
 </tr><tr>
-	<td class="en"><a href="https://en.scratch-wiki.info<?=PATH?>">English</a></td>
-	<td class="dach de"><a href="https://de.scratch-wiki.info<?=PATH?>">Deutsch</a></td>
-	<td class="ru"><a href="https://ru.scratch-wiki.info<?=PATH?>">Pусский</a></td>
-	<td class="nl"><a href="https://nl.scratch-wiki.info<?=PATH?>">Nederlands</a></td>
+	<td class="en"><img src="assets/img/logos/en.png"><a href="https://en.scratch-wiki.info<?=PATH?>">English</a></td>
+	<td class="dach de"><img src="assets/img/logos/de.png"><a href="https://de.scratch-wiki.info<?=PATH?>">Deutsch</a></td>
+	<td class="ru"><img src="assets/img/logos/ru.png"><a href="https://ru.scratch-wiki.info<?=PATH?>">Pусский</a></td>
+	<td class="nl"><img src="assets/img/logos/nl.png"><a href="https://nl.scratch-wiki.info<?=PATH?>">Nederlands</a></td>
 </tr><tr>
-	<td class="id indo"><a href="https://id.scratch-wiki.info<?=PATH?>">Bahasa Indonesia</a></td>
-	<td class="jp ja"><a href="https://ja.scratch-wiki.info<?=PATH?>">日本語</a></td>
-	<td class="hu"><a href="https://hu.scratch-wiki.info<?=PATH?>">Magyar</a></td>
-	<td class="fr"><a href="https://fr.scratch-wiki.info<?=PATH?>">Français</a></td>
+	<td class="id indo"><img src="assets/img/logos/id.png"><a href="https://id.scratch-wiki.info<?=PATH?>">Bahasa Indonesia</a></td>
+	<td class="jp ja"><img src="assets/img/logos/ja.png"><a href="https://ja.scratch-wiki.info<?=PATH?>">日本語</a></td>
+	<td class="hu"><img src="assets/img/logos/hu.png"><a href="https://hu.scratch-wiki.info<?=PATH?>">Magyar</a></td>
+	<td class="fr"><img src="assets/img/logos/fr.png"><a href="https://fr.scratch-wiki.info<?=PATH?>">Français</a></td>
 </tr></table>
 	</div>
 </body>
