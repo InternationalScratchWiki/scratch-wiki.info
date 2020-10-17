@@ -1,7 +1,8 @@
 {
 	"title": "Scratch Wiki",
 	"cover.title": "What is a Scratch Wiki?",
-	"cover.content": "The Scratch Wiki is, very simply, a wiki about <a href=\"https://scratch.mit.edu\">Scratch</a>! On it, you can find documentation and tutorials on every part of Scratch.",
+	"cover.content": "The Scratch Wiki is, very simply, a wiki about %s! On it, you can find documentation and tutorials on every part of Scratch.",
+	"cover.scratch": "Scratch",
 	"wikis.title": "Find a Scratch Wiki in your language!",
 	"wikis.content": "Learning is easier when it's in your own language. The recommended language for you is highlighted below.",
 	"wikis.content.nolang": "Learning is easier when it's in your own language. Select your best language below! If none of these are your native language, choose Test.",

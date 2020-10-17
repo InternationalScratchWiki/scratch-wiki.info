@@ -107,7 +107,7 @@ a:focus {
 <body>
 	<div id="cover">
 		<h1><?=$strings['cover.title']?></h1>
-		<p><?=$strings['cover.content']?></p>
+		<p><?=sprintf($strings['cover.content'], sprintf('<a href="https://scratch.mit.edu">%s</a>', $strings['cover.scratch']))?></p>
 	</div>
 	<div id="wikis">
 		<h1><?=$strings['wikis.title']?></h1>
