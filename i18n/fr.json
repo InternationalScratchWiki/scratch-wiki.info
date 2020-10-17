@@ -1,10 +1,10 @@
 {
-        "title": "Scratch Wiki",
-        "cover.title": "Qu'est-ce que le Scratch Wiki ?",
-		"cover.content": "Le Scratch Wiki, pour faire simple, c'est un Wiki sur %s ! Dessus, vous pourrez trouver de la documentation et des tutoriels sur tout ce qui concerne Scratch.",
-		"cover.scratch": "Scratch",
-        "wikis.title": "Trouvez un Scratch Wiki dans votre langue !",
-        "wikis.content": "Apprendre, c'est plus facile quand c'est dans sa langue. La langue recommandée pour vous est indiquée ci-dessous :",
-        "wikis.content.nolang": "Apprendre, c'est plus facile quand c'est dans sa langue. Sélectionnez votre langue ci-dessous ! Si votre langue maternelle n'est pas dans la liste, cliquez sur \"Test\".",
-        "meta.description": "Le Scratch Wiki est un Wiki sur Scratch. Trouvez un Wiki Scratch dans votre langue ! Note : Scratch est un projet du Lifelong Kindergarten Group au MIT Media Lab."
+	"title": "Scratch Wiki",
+	"cover.title": "Qu'est-ce que le Scratch Wiki ?",
+	"cover.content": "Le Scratch Wiki, pour faire simple, c'est un Wiki sur %s ! Dessus, vous pourrez trouver de la documentation et des tutoriels sur tout ce qui concerne Scratch.",
+	"cover.scratch": "Scratch",
+	"wikis.title": "Trouvez un Scratch Wiki dans votre langue !",
+	"wikis.content": "Apprendre, c'est plus facile quand c'est dans sa langue. La langue recommandée pour vous est indiquée ci-dessous :",
+	"wikis.content.nolang": "Apprendre, c'est plus facile quand c'est dans sa langue. Sélectionnez votre langue ci-dessous ! Si votre langue maternelle n'est pas dans la liste, cliquez sur \"Test\".",
+	"meta.description": "Le Scratch Wiki est un Wiki sur Scratch. Trouvez un Wiki Scratch dans votre langue ! Note : Scratch est un projet du Lifelong Kindergarten Group au MIT Media Lab."
 }
