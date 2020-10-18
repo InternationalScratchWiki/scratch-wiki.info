@@ -1,7 +1,8 @@
 {
 	"title": "Scratch Viki",
 	"cover.title": "Scratch Viki nedir?",
-	"cover.content": "Scratch Viki, basitçe, <a href=\"https://scratch.mit.edu\">Scratch</a> hakkında bir vikidir! İçinde, Scratch'in her parçasıyla ilgili belgelendirme ve öğreticileri bulabilirsiniz.",
+	"cover.content": "Scratch Viki, basitçe, %s hakkında bir vikidir! İçinde, Scratch'in her parçasıyla ilgili belgelendirme ve öğreticileri bulabilirsiniz.",
+	"cover.scratch": "Scratch",
 	"wikis.title": "Kendi dilinizdeki bir Scratch  Viki'yi bulun!",
 	"wikis.content": "Kendi dilinizdeyken öğrenmek daha kolaydır. Sizin için önerilen dil aşağıda vurgulanmıştır.",
 	"wikis.content.nolang": "Kendi dilinizdeyken öğrenmek daha kolaydır. En iyi olduğunuz dili aşağıda seçin! Eğer aşağıdakilerden hiçbiri sizin ana diliniz değilse, Test'i seçin.",
