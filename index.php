@@ -28,7 +28,7 @@ $wikis = [
 	'*' => 'test',
 ];
 
-$langs = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
+$langs = $_GET['lang'] ?: $_SERVER['HTTP_ACCEPT_LANGUAGE'];
 $langs = explode(',', $langs);
 $langs = array_filter($langs, function($lang) { return strpos($lang, '*') !== 0; });
 $langs = array_map(function($lang) { return strtolower(substr($lang, 0, 2)); }, $langs);
