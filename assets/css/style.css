@@ -1,0 +1,55 @@
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 1.125em;
+  margin: 0;
+  padding: 0;
+}
+body > #cover {
+  background-color: #7953C4;
+  padding: 2em;
+  text-align: center;
+  color: #fff;
+}
+body > #wikis {
+  text-align: center;
+  padding: 2em;
+}
+body > #wikis > div {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+body > #wikis > div > div {
+  flex: 0 0 10vw;
+  margin: 2em;
+  outline: none;
+  min-width: 200px;
+}
+body > #wikis > div > div.suggested {
+  outline: 2.5px dashed #f80;
+}
+body > #wikis > div > div:hover:not(.suggested) {
+  outline: 2.5px dashed #c7c7c7;
+  background-color: #e4e4e4;
+}
+body > #wikis > div > div:hover > a > div {
+  color: #fff;
+  background-color: #25aff4;
+}
+body > #wikis > div > div:focus > a > div {
+  outline: none;
+}
+body > #wikis > div > div > a > img {
+  width: calc(100% - 2em);
+  height: auto;
+}
+body > #wikis > div > div > a > * {
+  padding: 1em;
+}
+
+a {
+  text-decoration: none;
+  color: #25aff4;
+}
