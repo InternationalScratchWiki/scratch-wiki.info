@@ -1,110 +1,115 @@
-body {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 1.125em;
-    margin: 0;
-    padding: 0;
+@use 'wiki.scss';
 
-    >#cover {
-        background-color: #7953C4;
-        padding: 2em;
-        text-align: center;
-        color: #fff;
+:root {
+    --bright-blue: #25aff4;
+    --medium-blue: #0776ad;
+
+    --bright-background: #ececec;
+    --dark-background: #0D1117;
+
+    --bright-cover: #7953C4;
+    --dark-cover: #121D2E;
+
+    --text-bright: #ffffff;
+    --text-dark: #C9D1D9;
+
+    --brighten: #aaaaaa50;
+    --darken: #00000030;
+
+    --bright-suggested: #ff8800;
+    --dark-suggested: #1E4371;
+
+    --bright-outline-hover: #c7c7c7;
+    --dark-outline-hover: #121D2E;
+
+    --shadow: #000000;
+}
+
+a {
+    text-decoration: none;
+
+    @media (prefers-color-scheme: light) {
+        color: var(--bright-blue);
     }
 
-    >#wikis {
-        text-align: center;
-        padding: 2em;
+    @media (prefers-color-scheme: dark) {
+        color: var(--dark-suggested);
+    }
+}
 
-        >div {
+* {
+    overflow: auto;
+}
+
+body {
+    @extend %document;
+
+    >header {
+        @extend %cover;
+    }
+
+    >main {
+        @extend %wikis;
+
+        >h2 {
+            font-size: 2em;
+        }
+
+        >ul {
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
             justify-content: center;
             align-items: center;
+            padding: 0;
 
-            >div {
-                flex: 0 0 10vw;
-                margin: 2em;
-                outline: none;
-                min-width: 200px;
-                outline-offset: -2.5px;
-
-                @media (max-width: 615px) {
-                    margin: 0;
-                    margin-top: 0.5em;
-                    margin-bottom: 0.5em;
-                    min-width: 100%;
-
-                    >a {
-                        display: flex;
-                        flex-direction: row;
-
-                        >img {
-                            max-width: 20vw;
-                            max-height: 50px;
-                            width: auto !important;
-                            flex-grow: 0;
-                            flex-shrink: 0;
-                        }
-
-                        >div {
-                            flex-grow: 1;
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;
-                        }
-
-                    }
-
-                }
-
-                &.suggested {
-                    outline: 2.5px dashed #f80;
-                }
-
-                &:hover {
-                    background-color: #aaaaaa50;
-
-                    &:not(.suggested) {
-                        outline: 2.5px dashed #c7c7c7;
-                    }
-
-                    >a>div {
-                        color: #fff;
-                        background-color: #25aff4;
-                    }
-                }
-
-                &:focus {
-                    >a {
-
-                        >div {
-                            outline: none;
-                        }
-                    }
-                }
-
-                >a {
-
-                    >img {
-                        width: calc(100% - 2em);
-                        height: auto;
-                    }
-
-                    >* {
-                        padding: 1em;
-                    }
-                }
+            >li {
+                @extend %wiki;
             }
+
         }
     }
 }
 
-a {
-    text-decoration: none;
-    color: #25aff4;
+%document {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 1.125em;
+    margin: 0;
+    padding: 0;
+
+    @media (prefers-color-scheme: light) {
+        background-color: var(--bright-background);
+    }
+
+    @media (prefers-color-scheme: dark) {
+        background-color: var(--dark-background);
+    }
 }
 
-* {
-    overflow: auto;
+%cover {
+    padding: 2em;
+    text-align: center;
+
+    @media (prefers-color-scheme: light) {
+        color: var(--text-bright);
+        background-color: var(--bright-cover);
+    }
+
+    @media (prefers-color-scheme: dark) {
+        color: var(--text-dark);
+        background-color: var(--dark-cover);
+    }
+}
+
+%wikis {
+    text-align: center;
+    padding: 2em;
+
+    @media (prefers-color-scheme: light) {
+        color: black;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        color: var(--text-dark);
+    }
 }

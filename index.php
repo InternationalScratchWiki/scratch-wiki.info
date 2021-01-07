@@ -44,31 +44,31 @@ define('PATH', $_SERVER['REQUEST_URI']);
 	<link rel="icon" href="favicon.ico" />
 </head>
 <body>
-	<div id="cover">
+	<header>
     	<img src="/assets/img/logo.png" alt="<?= $strings['cover.logoalt'] ?>">
 		<h1><?= $strings['cover.title'] ?></h1>
 		<p><?=sprintf($strings['cover.content'], sprintf('<a href="https://scratch.mit.edu">%s</a>', $strings['cover.scratch']))?></p>
-	</div>
-	<div id="wikis">
-		<h1><?= $strings['wikis.title'] ?></h1>
+	</header>
+	<main>
+		<h2><?= $strings['wikis.title'] ?></h2>
 		<p><?= $_REQUEST['lang'] ? $strings['wikis.content'] : $strings['wikis.content.nolang'] ?></p>
-		<div>
+		<ul>
 <?php
 foreach($wikis as $wiki => $props) {
 $suggested = WIKI === $wiki ? ' class="suggested"' : '';
 $name = $props['name'];
 echo <<<EOT
-			<div$suggested>
+			<li$suggested>
 				<a href="https://$wiki.scratch-wiki.info$PATH">
 					<img src="/assets/img/logos/$wiki.png" alt="$wiki-wiki-logo">
 					<div>$name</div>
 				</a>
-			</div>
+			</li>
 
 EOT;
 }
 ?>
-		</div>
-	</div>
+		</ul>
+	</main>
 </body>
 </html>
