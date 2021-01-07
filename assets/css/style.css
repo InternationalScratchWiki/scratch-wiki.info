@@ -1,0 +1,197 @@
+body > main > ul > li {
+  margin: 2em;
+  min-width: 200px;
+  outline-offset: -2.5px;
+  list-style: none;
+}
+body > main > ul > li > a > * {
+  padding: 1em;
+}
+body > main > ul > li > a > img {
+  width: calc(100% - 2em);
+  height: auto;
+}
+@media (prefers-color-scheme: light) {
+  body > main > ul > li > a > img {
+    filter: brightness(1);
+  }
+}
+@media (prefers-color-scheme: dark) {
+  body > main > ul > li > a > img {
+    filter: brightness(0.8);
+  }
+}
+body > main > ul > li.suggested {
+  outline: 2.5px dashed;
+}
+@media (prefers-color-scheme: light) {
+  body > main > ul > li.suggested {
+    outline-color: var(--bright-suggested);
+  }
+}
+@media (prefers-color-scheme: dark) {
+  body > main > ul > li.suggested {
+    outline-color: var(--dark-suggested);
+  }
+}
+body > main > ul > li:hover {
+  box-shadow: 0 0 5px var(--shadow);
+}
+@media (prefers-color-scheme: light) {
+  body > main > ul > li:hover {
+    background-color: var(--brighten);
+  }
+}
+@media (prefers-color-scheme: dark) {
+  body > main > ul > li:hover {
+    background-color: var(--darken);
+  }
+}
+body > main > ul > li:hover:not(.suggested) {
+  outline: 2.5px dashed;
+}
+@media (prefers-color-scheme: light) {
+  body > main > ul > li:hover:not(.suggested) {
+    outline-color: var(--bright-outline-hover);
+  }
+}
+@media (prefers-color-scheme: dark) {
+  body > main > ul > li:hover:not(.suggested) {
+    outline-color: var(--dark-outline-hover);
+  }
+}
+@media (prefers-color-scheme: light) {
+  body > main > ul > li:hover > a > div {
+    color: var(--text-bright);
+    background-color: var(--bright-blue);
+  }
+}
+@media (prefers-color-scheme: dark) {
+  body > main > ul > li:hover > a > div {
+    color: var(--text-dark);
+    background-color: var(--dark-suggested);
+  }
+}
+@media (max-width: 615px) {
+  body > main > ul > li {
+    margin: 0;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    min-width: 100%;
+  }
+  body > main > ul > li > a {
+    display: flex;
+    flex-direction: row;
+  }
+  body > main > ul > li > a > img {
+    max-width: 20vw;
+    max-height: 50px;
+    width: auto !important;
+    flex-grow: 0;
+    flex-shrink: 0;
+  }
+  body > main > ul > li > a > div {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+:root {
+  --bright-blue: #25aff4;
+  --medium-blue: #0776ad;
+  --bright-background: #ececec;
+  --dark-background: #0D1117;
+  --bright-cover: #7953C4;
+  --dark-cover: #121D2E;
+  --text-bright: #ffffff;
+  --text-dark: #C9D1D9;
+  --brighten: #aaaaaa50;
+  --darken: #00000030;
+  --bright-suggested: #ff8800;
+  --dark-suggested: #1E4371;
+  --bright-outline-hover: #c7c7c7;
+  --dark-outline-hover: #121D2E;
+  --shadow: #000000;
+}
+
+a {
+  text-decoration: none;
+}
+@media (prefers-color-scheme: light) {
+  a {
+    color: var(--bright-blue);
+  }
+}
+@media (prefers-color-scheme: dark) {
+  a {
+    color: var(--dark-suggested);
+  }
+}
+
+* {
+  overflow: auto;
+}
+
+body > main > h2 {
+  font-size: 2em;
+}
+body > main > ul {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 1.125em;
+  margin: 0;
+  padding: 0;
+}
+@media (prefers-color-scheme: light) {
+  body {
+    background-color: var(--bright-background);
+  }
+}
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: var(--dark-background);
+  }
+}
+
+body > header {
+  padding: 2em;
+  text-align: center;
+}
+@media (prefers-color-scheme: light) {
+  body > header {
+    color: var(--text-bright);
+    background-color: var(--bright-cover);
+  }
+}
+@media (prefers-color-scheme: dark) {
+  body > header {
+    color: var(--text-dark);
+    background-color: var(--dark-cover);
+  }
+}
+
+body > main {
+  text-align: center;
+  padding: 2em;
+}
+@media (prefers-color-scheme: light) {
+  body > main {
+    color: black;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  body > main {
+    color: var(--text-dark);
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
