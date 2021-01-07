@@ -28,13 +28,18 @@ $wikis = [
 	'*' => 'test',
 ];
 
-$langs = $_GET['lang'] ?: $_SERVER['HTTP_ACCEPT_LANGUAGE'];
-$langs = explode(',', $langs);
-$langs = array_filter($langs, function($lang) { return strpos($lang, '*') !== 0; });
-$langs = array_map(function($lang) { return strtolower(substr($lang, 0, 2)); }, $langs);
-define('LANGUAGE', $langs[0] ?: 'en' );
-array_push($langs, '*');
-define('WIKI', $wikis[array_key_first(array_intersect($wikis, $langs))]);
+$langs = $_GET['lang'] ?: $_SERVER['HTTP_ACCEPT_LANGUAGE']; // get browser languages
+$langs = explode(',', $langs); // split languages string
+$langs = array_filter($langs, function($lang) { return strpos($lang, '*') !== 0; }); // cleanup string
+$langs = array_map(function($lang) { return strtolower(substr($lang, 0, 2)); }, $langs); // more cleanup
+$langs = array_values(array_unique($langs)); // remove duplicate languages
+define('LANGUAGE', $langs[0] ?: 'en' ); // set page language or en as default
+
+array_push($langs, '*'); // add default case
+$langs = array_flip($langs); // get wiki instead of lang
+$langs = array_intersect_key($langs, $wikis); // get supported wikis
+$langs = array_keys($langs); // get wikis
+define('WIKI', $wikis[$langs[0]]); // set wiki
 
 $strings = json_decode(file_get_contents("i18n/" . LANGUAGE . ".json"), true);
 if ($strings == null) {
@@ -71,55 +76,55 @@ define('PATH', $_SERVER['REQUEST_URI']);
 		<h1><?= $strings['wikis.title'] ?></h1>
 		<p><?= $_REQUEST['lang'] ? $strings['wikis.content'] : $strings['wikis.content.nolang'] ?></p>
 		<div>
-			<div <?= LANGUAGE == 'en' ? 'class="suggested"' : '' ?>>
+			<div <?= WIKI == 'en' ? 'class="suggested"' : '' ?>>
 				<a href="https://en.scratch-wiki.info<?= PATH ?>">
 					<img src="assets/img/logos/en.png" alt="English Wiki">
 					<div>English</div>
 				</a>
 			</div>
-			<div <?= LANGUAGE == 'de' ? 'class="suggested"' : '' ?>>
+			<div <?= WIKI == 'de' ? 'class="suggested"' : '' ?>>
 				<a href="https://de.scratch-wiki.info<?= PATH ?>">
 					<img src="assets/img/logos/de.png" alt="Deutsch Wiki">
 					<div>Deutsch</div>
 				</a>
 			</div>
-			<div <?= LANGUAGE == 'ru' ? 'class="suggested"' : '' ?>>
+			<div <?= WIKI == 'ru' ? 'class="suggested"' : '' ?>>
 				<a href="https://ru.scratch-wiki.info<?= PATH ?>">
 					<img src="assets/img/logos/ru.png" alt="Pусский Wiki">
 					<div>Pусский</div>
 				</a>
 			</div>
-			<div <?= LANGUAGE == 'nl' ? 'class="suggested"' : '' ?>>
+			<div <?= WIKI == 'nl' ? 'class="suggested"' : '' ?>>
 				<a href="https://nl.scratch-wiki.info<?= PATH ?>">
 					<img src="assets/img/logos/nl.png" alt="Nederlands Wiki">
 					<div>Nederlands</div>
 				</a>
 			</div>
-			<div <?= LANGUAGE == 'id' ? 'class="suggested"' : '' ?>>
+			<div <?= WIKI == 'id' ? 'class="suggested"' : '' ?>>
 				<a href="https://id.scratch-wiki.info<?= PATH ?>">
-					<img src="assets/img/logos/id.png" alt="">
-					<div>BaIndonesia Wikihasa Indonesia</div>
+					<img src="assets/img/logos/id.png" alt="Bahasa Indonesia Wiki">
+					<div>Bahasa Indonesia</div>
 				</a>
 			</div>
-			<div <?= LANGUAGE == 'ja' ? 'class="suggested"' : '' ?>>
+			<div <?= WIKI == 'ja' ? 'class="suggested"' : '' ?>>
 				<a href="https://ja.scratch-wiki.info<?= PATH ?>">
 					<img src="assets/img/logos/ja.png" alt="日本語 Wiki">
 					<div>日本語</div>
 				</a>
 			</div>
-			<div <?= LANGUAGE == 'hu' ? 'class="suggested"' : '' ?>>
+			<div <?= WIKI == 'hu' ? 'class="suggested"' : '' ?>>
 				<a href="https://hu.scratch-wiki.info<?= PATH ?>">
 					<img src="assets/img/logos/hu.png" alt="Magyar Wiki">
 					<div>Magyar</div>
 				</a>
 			</div>
-			<div <?= LANGUAGE == 'fr' ? 'class="suggested"' : '' ?>>
+			<div <?= WIKI == 'fr' ? 'class="suggested"' : '' ?>>
 				<a href="https://fr.scratch-wiki.info<?= PATH ?>">
 					<img src="assets/img/logos/fr.png" alt="Français Wiki">
 					<div>Français</div>
 				</a>
 			</div>
-			<div>
+			<div <?= WIKI == 'test' ? 'class="suggested"' : '' ?>>
 				<a href="https://test.scratch-wiki.info<?= PATH ?>">
 					<img src="assets/img/logos/test.png" alt="Test Wiki">
 					<div>Test</div>

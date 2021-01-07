@@ -28,8 +28,39 @@ body {
 				outline: none;
 				min-width: 200px;
 
+				@media (max-width: 615px) {
+
+					margin: 0;
+					margin-top: 0.5em;
+					margin-bottom: 0.5em;
+					min-width: 100%;
+
+					> a {
+						display: flex;
+						flex-direction: row;
+
+						> img {
+							max-width: 20vw;
+							max-height: 50px;
+							width: auto !important;
+							flex-grow: 0;
+							flex-shrink: 0;
+						}
+
+						> div {
+							flex-grow: 1;
+							display: flex;
+							justify-content: center;
+							align-items: center;
+						}
+
+					}
+
+				}
+
 				&.suggested {
 					outline: 2.5px dashed #f80;
+					outline-offset: -2.5px;
 				}
 
 				&:hover {
@@ -47,8 +78,11 @@ body {
 
 				&:focus {
 					
-					> a > div {
-						outline: none;
+					> a {
+
+						> div {
+							outline: none;
+						}	
 					}
 				}
 
@@ -71,4 +105,8 @@ body {
 a {
 	text-decoration: none;
 	color: #25aff4;
+}
+
+* {
+	overflow: auto;
 }

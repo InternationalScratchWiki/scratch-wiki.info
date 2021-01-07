@@ -27,8 +27,34 @@ body > #wikis > div > div {
   outline: none;
   min-width: 200px;
 }
+@media (max-width: 615px) {
+  body > #wikis > div > div {
+    margin: 0;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    min-width: 100%;
+  }
+  body > #wikis > div > div > a {
+    display: flex;
+    flex-direction: row;
+  }
+  body > #wikis > div > div > a > img {
+    max-width: 20vw;
+    max-height: 50px;
+    width: auto !important;
+    flex-grow: 0;
+    flex-shrink: 0;
+  }
+  body > #wikis > div > div > a > div {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
 body > #wikis > div > div.suggested {
   outline: 2.5px dashed #f80;
+  outline-offset: -2.5px;
 }
 body > #wikis > div > div:hover:not(.suggested) {
   outline: 2.5px dashed #c7c7c7;
@@ -53,3 +79,9 @@ a {
   text-decoration: none;
   color: #25aff4;
 }
+
+* {
+  overflow: auto;
+}
+
+/*# sourceMappingURL=style.css.map */
