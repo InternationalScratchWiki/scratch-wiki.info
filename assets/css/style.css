@@ -26,6 +26,7 @@ body > #wikis > div > div {
   margin: 2em;
   outline: none;
   min-width: 200px;
+  outline-offset: -2.5px;
 }
 @media (max-width: 615px) {
   body > #wikis > div > div {
@@ -54,11 +55,12 @@ body > #wikis > div > div {
 }
 body > #wikis > div > div.suggested {
   outline: 2.5px dashed #f80;
-  outline-offset: -2.5px;
+}
+body > #wikis > div > div:hover {
+  background-color: #aaaaaa50;
 }
 body > #wikis > div > div:hover:not(.suggested) {
   outline: 2.5px dashed #c7c7c7;
-  background-color: #e4e4e4;
 }
 body > #wikis > div > div:hover > a > div {
   color: #fff;

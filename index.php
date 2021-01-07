@@ -1,45 +1,22 @@
 <?php
-
-$wikis = [
-	// lang => wiki
-	'en' => 'en',
-	'ja' => 'ja',
-	'nl' => 'nl',
-	'de' => 'de',
-	'id' => 'id',
-	'ru' => 'ru',
-	'hu' => 'hu',
-	'fr' => 'fr',
-	'it' => 'test',
-	'es' => 'test',
-	'pt' => 'test',
-	'pl' => 'test',
-	'tr' => 'test',
-	'zh' => 'test',
-	'ko' => 'test',
-	'hi' => 'test',
-	'he' => 'test',
-	'sl' => 'test',
-	'ar' => 'test',
-	'la' => 'test',
-	'uk' => 'test',
-	'sq' => 'test',
-	'ro' => 'test',
-	'*' => 'test',
-];
+require_once 'wikis.php';
 
 $langs = $_GET['lang'] ?: $_SERVER['HTTP_ACCEPT_LANGUAGE']; // get browser languages
 $langs = explode(',', $langs); // split languages string
-$langs = array_filter($langs, function($lang) { return strpos($lang, '*') !== 0; }); // cleanup string
-$langs = array_map(function($lang) { return strtolower(substr($lang, 0, 2)); }, $langs); // more cleanup
+$langs = array_filter($langs, function($lang) { return strpos($lang, '*') !== 0; }); // remove wildcard
+$langs = array_map(function($lang) { return strtolower(substr($lang, 0, 2)); }, $langs); // cleanup languages
 $langs = array_values(array_unique($langs)); // remove duplicate languages
-define('LANGUAGE', $langs[0] ?: 'en' ); // set page language or en as default
+define('LANGUAGE', $langs[0] ?: 'en' ); // set page language or 'en' as default
 
-array_push($langs, '*'); // add default case
-$langs = array_flip($langs); // get wiki instead of lang
-$langs = array_intersect_key($langs, $wikis); // get supported wikis
+array_push($langs, '*'); // add default language
+$langs = array_reduce($langs, function($previous, $lang) use ($wikis) { // get supported wikis
+	$fil = array_filter($wikis, function($wiki) use ($lang) { // find wikis using the language
+		return in_array($lang, $wiki['languages']);
+	});
+	return array_merge_recursive($previous, $fil);
+}, []);
 $langs = array_keys($langs); // get wikis
-define('WIKI', $wikis[$langs[0]]); // set wiki
+define('WIKI', $langs[0]); // taking first wiki and setting wiki
 
 $strings = json_decode(file_get_contents("i18n/" . LANGUAGE . ".json"), true);
 if ($strings == null) {
@@ -63,12 +40,12 @@ define('PATH', $_SERVER['REQUEST_URI']);
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta name="theme-color" content="#7953C4" />
-	<link rel="stylesheet" href="assets/css/style.css" />
+	<link rel="stylesheet" href="/assets/css/style.css" />
 	<link rel="icon" href="favicon.ico" />
 </head>
 <body>
 	<div id="cover">
-    	<img src="assets/img/logo.png" alt="<?= $strings['cover.logoalt'] ?>">
+    	<img src="/assets/img/logo.png" alt="<?= $strings['cover.logoalt'] ?>">
 		<h1><?= $strings['cover.title'] ?></h1>
 		<p><?=sprintf($strings['cover.content'], sprintf('<a href="https://scratch.mit.edu">%s</a>', $strings['cover.scratch']))?></p>
 	</div>
@@ -76,60 +53,21 @@ define('PATH', $_SERVER['REQUEST_URI']);
 		<h1><?= $strings['wikis.title'] ?></h1>
 		<p><?= $_REQUEST['lang'] ? $strings['wikis.content'] : $strings['wikis.content.nolang'] ?></p>
 		<div>
-			<div <?= WIKI == 'en' ? 'class="suggested"' : '' ?>>
-				<a href="https://en.scratch-wiki.info<?= PATH ?>">
-					<img src="assets/img/logos/en.png" alt="English Wiki">
-					<div>English</div>
+<?php
+foreach($wikis as $wiki => $props) {
+$suggested = WIKI === $wiki ? ' class="suggested"' : '';
+$name = $props['name'];
+echo <<<EOT
+			<div$suggested>
+				<a href="https://$wiki.scratch-wiki.info$PATH">
+					<img src="/assets/img/logos/$wiki.png" alt="$wiki-wiki-logo">
+					<div>$name</div>
 				</a>
 			</div>
-			<div <?= WIKI == 'de' ? 'class="suggested"' : '' ?>>
-				<a href="https://de.scratch-wiki.info<?= PATH ?>">
-					<img src="assets/img/logos/de.png" alt="Deutsch Wiki">
-					<div>Deutsch</div>
-				</a>
-			</div>
-			<div <?= WIKI == 'ru' ? 'class="suggested"' : '' ?>>
-				<a href="https://ru.scratch-wiki.info<?= PATH ?>">
-					<img src="assets/img/logos/ru.png" alt="Pусский Wiki">
-					<div>Pусский</div>
-				</a>
-			</div>
-			<div <?= WIKI == 'nl' ? 'class="suggested"' : '' ?>>
-				<a href="https://nl.scratch-wiki.info<?= PATH ?>">
-					<img src="assets/img/logos/nl.png" alt="Nederlands Wiki">
-					<div>Nederlands</div>
-				</a>
-			</div>
-			<div <?= WIKI == 'id' ? 'class="suggested"' : '' ?>>
-				<a href="https://id.scratch-wiki.info<?= PATH ?>">
-					<img src="assets/img/logos/id.png" alt="Bahasa Indonesia Wiki">
-					<div>Bahasa Indonesia</div>
-				</a>
-			</div>
-			<div <?= WIKI == 'ja' ? 'class="suggested"' : '' ?>>
-				<a href="https://ja.scratch-wiki.info<?= PATH ?>">
-					<img src="assets/img/logos/ja.png" alt="日本語 Wiki">
-					<div>日本語</div>
-				</a>
-			</div>
-			<div <?= WIKI == 'hu' ? 'class="suggested"' : '' ?>>
-				<a href="https://hu.scratch-wiki.info<?= PATH ?>">
-					<img src="assets/img/logos/hu.png" alt="Magyar Wiki">
-					<div>Magyar</div>
-				</a>
-			</div>
-			<div <?= WIKI == 'fr' ? 'class="suggested"' : '' ?>>
-				<a href="https://fr.scratch-wiki.info<?= PATH ?>">
-					<img src="assets/img/logos/fr.png" alt="Français Wiki">
-					<div>Français</div>
-				</a>
-			</div>
-			<div <?= WIKI == 'test' ? 'class="suggested"' : '' ?>>
-				<a href="https://test.scratch-wiki.info<?= PATH ?>">
-					<img src="assets/img/logos/test.png" alt="Test Wiki">
-					<div>Test</div>
-				</a>
-			</div>
+
+EOT;
+}
+?>
 		</div>
 	</div>
 </body>
