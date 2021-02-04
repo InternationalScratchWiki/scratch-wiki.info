@@ -1,7 +1,7 @@
 <?php
 require_once 'wikis.php';
 
-$langs = $_GET['lang'] ?: $_SERVER['HTTP_ACCEPT_LANGUAGE']; // get browser languages
+$langs = isset($_GET['lang']) ? $_GET['lang'] : $_SERVER['HTTP_ACCEPT_LANGUAGE']; // get browser languages
 $langs = explode(',', $langs); // split languages string
 $langs = array_filter($langs, function($lang) { return strpos($lang, '*') !== 0; }); // remove wildcard
 $langs = array_map(function($lang) { return strtolower(substr($lang, 0, 2)); }, $langs); // cleanup languages
@@ -24,7 +24,7 @@ if ($strings == null) {
 	echo '<!-- falling back to en.json -->';
 }
 
-define('PATH', $_SERVER['REQUEST_URI']);
+$PATH = $_SERVER['REQUEST_URI'];
 
 ?>
 <!doctype html>
@@ -51,7 +51,7 @@ define('PATH', $_SERVER['REQUEST_URI']);
 	</header>
 	<main>
 		<h2><?= $strings['wikis.title'] ?></h2>
-		<p><?= $_REQUEST['lang'] ? $strings['wikis.content'] : $strings['wikis.content.nolang'] ?></p>
+		<p><?= isset($_REQUEST['lang']) ? $strings['wikis.content'] : $strings['wikis.content.nolang'] ?></p>
 		<ul>
 <?php
 foreach($wikis as $wiki => $props) {
